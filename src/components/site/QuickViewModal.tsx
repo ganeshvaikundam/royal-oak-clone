@@ -1,6 +1,7 @@
 import { X } from "lucide-react";
 import type { Product } from "@/data/products";
 import { useShop } from "@/context/ShopContext";
+import { toast } from "sonner";
 
 export default function QuickViewModal({ p, onClose }: { p: Product | null; onClose: () => void }) {
   const { addToCart } = useShop();
@@ -18,7 +19,7 @@ export default function QuickViewModal({ p, onClose }: { p: Product | null; onCl
             <span className="text-sm line-through text-muted-foreground">₹{p.mrp.toLocaleString()}</span>
           </div>
           <p className="text-sm text-muted-foreground mt-3">{p.description}</p>
-          <button onClick={() => { addToCart(p); alert("Added to cart!"); onClose(); }} className="mt-5 w-full bg-navy text-white py-3 rounded font-semibold hover:bg-gold hover:text-navy">Add to Cart</button>
+          <button onClick={() => { addToCart(p); toast.success(`${p.name} added to cart`); onClose(); }} className="mt-5 w-full bg-navy text-white py-3 rounded font-semibold hover:bg-gold hover:text-navy">Add to Cart</button>
         </div>
       </div>
     </div>

@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import { toast } from "sonner";
 import Header from "@/components/site/Header";
 import Footer from "@/components/site/Footer";
 
@@ -23,7 +24,7 @@ function Contact() {
     if (!message.trim()) er.message = "Message is required";
     setErrs(er);
     if (Object.keys(er).length === 0) {
-      alert("Message sent successfully! We'll get back to you soon.");
+      toast.success("Message sent successfully! We'll get back to you soon.");
       e.currentTarget.reset();
     }
   };

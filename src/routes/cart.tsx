@@ -48,7 +48,7 @@ function Cart() {
                 <input id="delivery-date" type="date" value={date} onChange={(e) => setDate(e.target.value)} className="w-full mt-1 border rounded px-2 py-1.5" />
               </label>
 
-              <button id="checkout-btn" disabled={cart.length === 0} onClick={() => alert("Order placed successfully!")} className="w-full bg-gold text-navy py-3 rounded font-semibold disabled:opacity-50">Proceed to Checkout</button>
+              <button id="checkout-btn" disabled={cart.length === 0} onClick={() => { import("sonner").then(m => m.toast.success("Order placed successfully!")); }} className="w-full bg-gold text-navy py-3 rounded font-semibold disabled:opacity-50">Proceed to Checkout</button>
             </div>
           </div>
         )}

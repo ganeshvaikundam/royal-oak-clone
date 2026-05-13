@@ -1,5 +1,6 @@
-import { createFileRoute, Link, useParams } from "@tanstack/react-router";
+import { createFileRoute, useParams, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
+import { toast } from "sonner";
 import Header from "@/components/site/Header";
 import Footer from "@/components/site/Footer";
 import { products } from "@/data/products";
@@ -12,6 +13,7 @@ function PDP() {
   const { id } = useParams({ from: "/product/$id" });
   const p = products.find((x) => x.id === Number(id));
   const { addToCart, toggleWishlist, inWishlist } = useShop();
+  const navigate = useNavigate();
   const [qty, setQty] = useState("1");
   const [pin, setPin] = useState("");
   const [pinMsg, setPinMsg] = useState("");
@@ -58,7 +60,7 @@ function PDP() {
           </div>
 
           <div className="flex gap-3 mt-6">
-            <button onClick={() => { addToCart(p, Number(qty)); if (window.confirm("Item added to cart! Continue shopping?")) {} else window.open("/cart", "cartWindow", "width=1100,height=800"); }} className="add-to-cart-btn flex-1 bg-navy text-white py-3 rounded font-semibold flex items-center justify-center gap-2 hover:bg-gold hover:text-navy">
+            <button onClick={() => { addToCart(p, Number(qty)); toast.success(`${p.name} added to cart`, { action: { label: "View cart", onClick: () => navigate({ to: "/cart" }) } }); }} className="add-to-cart-btn flex-1 bg-navy text-white py-3 rounded font-semibold flex items-center justify-center gap-2 hover:bg-gold hover:text-navy">
               <ShoppingCart className="h-4 w-4" /> Add to Cart
             </button>
             <button onClick={() => toggleWishlist(p)} className="wishlist-btn border-2 border-navy py-3 px-5 rounded">
