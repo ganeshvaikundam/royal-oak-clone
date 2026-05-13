@@ -21,7 +21,7 @@ export default function Header() {
   const [q, setQ] = useState("");
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [showSug, setShowSug] = useState(false);
-  const sugRef = useRef<HTMLDivElement>(null);
+  const sugRef = useRef<HTMLFormElement>(null);
 
   const suggestions = q.trim().length > 0
     ? products.filter((p) =>
