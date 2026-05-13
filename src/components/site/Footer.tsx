@@ -14,7 +14,7 @@ export default function Footer() {
             <a href="#" className="h-9 w-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold hover:text-navy"><Twitter className="h-4 w-4" /></a>
             <a href="#" className="h-9 w-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold hover:text-navy"><Youtube className="h-4 w-4" /></a>
           </div>
-          <form onSubmit={(e) => { e.preventDefault(); alert("Subscribed successfully!"); }} className="flex max-w-sm">
+          <form onSubmit={(e) => { e.preventDefault(); import("sonner").then(m => m.toast.success("Subscribed successfully!")); (e.currentTarget as HTMLFormElement).reset(); }} className="flex max-w-sm">
             <input required type="email" placeholder="Your email" className="flex-1 px-3 py-2 text-sm text-foreground rounded-l outline-none" />
             <button className="bg-gold text-navy px-4 text-sm font-semibold rounded-r">Subscribe</button>
           </form>
