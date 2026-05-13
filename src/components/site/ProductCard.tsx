@@ -1,19 +1,19 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
 import { Heart, Eye, ShoppingCart } from "lucide-react";
 import type { Product } from "@/data/products";
 import { useShop } from "@/context/ShopContext";
+import { toast } from "sonner";
 
 export default function ProductCard({ p, onQuickView }: { p: Product; onQuickView?: (p: Product) => void }) {
   const { addToCart, toggleWishlist, inWishlist } = useShop();
+  const navigate = useNavigate();
   const onAdd = () => {
-    if (window.confirm("Item added to cart! Continue shopping?")) {
-      addToCart(p);
-    } else {
-      addToCart(p);
-      window.open("/cart", "cartWindow", "width=1100,height=800");
-    }
+    addToCart(p);
+    toast.success(`${p.name} added to cart`, {
+      action: { label: "View cart", onClick: () => navigate({ to: "/cart" }) },
+    });
   };
-  const openProduct = () => window.open(`/product/${p.id}`, `prod_${p.id}`);
+  const openProduct = () => navigate({ to: "/product/$id", params: { id: String(p.id) } });
 
   return (
     <div className="product-card group relative bg-card border rounded-lg overflow-hidden hover:shadow-xl transition-all">
