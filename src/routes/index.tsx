@@ -4,7 +4,6 @@ import Header from "@/components/site/Header";
 import Footer from "@/components/site/Footer";
 import ProductCard from "@/components/site/ProductCard";
 import QuickViewModal from "@/components/site/QuickViewModal";
-import NewsletterPopup from "@/components/site/NewsletterPopup";
 import { products } from "@/data/products";
 import type { Product } from "@/data/products";
 
@@ -34,7 +33,6 @@ function Home() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      <NewsletterPopup />
 
       {/* Hero */}
       <section className="relative h-[70vh] overflow-hidden">
