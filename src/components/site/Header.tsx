@@ -99,10 +99,10 @@ export default function Header() {
         <div className="flex items-center gap-5 text-navy">
           <button title="Login"><User className="h-5 w-5" /></button>
           <Link to="/wishlist" className="relative"><Heart className="h-5 w-5" />{wishlist.length > 0 && <span className="absolute -top-2 -right-2 bg-gold text-[10px] rounded-full w-4 h-4 flex items-center justify-center">{wishlist.length}</span>}</Link>
-          <button onClick={() => window.open("/cart", "cartWindow", "width=1100,height=800")} className="relative">
+          <Link to="/cart" className="relative">
             <ShoppingCart className="h-5 w-5" />
             {cart.length > 0 && <span className="absolute -top-2 -right-2 bg-gold text-[10px] rounded-full w-4 h-4 flex items-center justify-center">{cart.length}</span>}
-          </button>
+          </Link>
         </div>
       </div>
 
