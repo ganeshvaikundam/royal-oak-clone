@@ -23,7 +23,7 @@ function Contact() {
     if (!message.trim()) er.message = "Message is required";
     setErrs(er);
     if (Object.keys(er).length === 0) {
-      alert("Message sent successfully! We'll get back to you soon.");
+      (await import("sonner")).toast.success("Message sent successfully! We'll get back to you soon.");
       e.currentTarget.reset();
     }
   };
