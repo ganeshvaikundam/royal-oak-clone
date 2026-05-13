@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
+import { toast } from "sonner";
 import type { Product } from "@/data/products";
 
 type CartItem = { product: Product; qty: number };
@@ -40,7 +41,8 @@ export function ShopProvider({ children }: { children: ReactNode }) {
   const toggleWishlist = (p: Product) => {
     setWishlist((prev) => {
       const ex = prev.find((i) => i.id === p.id);
-      if (ex) { alert("Removed from wishlist"); return prev.filter((i) => i.id !== p.id); }
+      if (ex) { toast("Removed from wishlist"); return prev.filter((i) => i.id !== p.id); }
+      toast.success("Added to wishlist");
       return [...prev, p];
     });
   };
